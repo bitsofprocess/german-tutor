@@ -3,9 +3,6 @@ import { Request, Response } from 'express';
 import { zodResponseFormat } from "openai/helpers/zod";
 import { z } from "zod";
 
-// TODO: `Give me 5 sentences in English for me to translate into german that will allow me to practice ${concept}. Give me the nouns and verbs present in the sentence in german in parenthesis after each sentence for reference.`
-
-
 export async function listVerbs(req: Request, res: Response) {
     const { number }= req.body
 
