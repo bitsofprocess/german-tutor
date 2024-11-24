@@ -75,7 +75,7 @@ export async function listVerbs(req: Request, res: Response) {
     }
   }
 
-
+// structured output example
 export async function extract(req: Request, res: Response) {
   const { message } = req.body
 
