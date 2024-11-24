@@ -6,7 +6,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e) => {
+  // Specify the type for the event parameter
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setError('');
@@ -23,7 +24,12 @@ function App() {
       const data = await res.json();
       setResponse(data.verbs);
     } catch (err) {
-      setError('Error: ' + err.message);
+      // Type assertion for the error to access the message property
+      if (err instanceof Error) {
+        setError('Error: ' + err.message);
+      } else {
+        setError('An unknown error occurred');
+      }
     } finally {
       setLoading(false);
     }

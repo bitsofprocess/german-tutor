@@ -1,8 +1,7 @@
-import { Router } from 'express';
-import { listVerbs } from '../controllers/openAIcontrollers.js';
-
-const router = Router();
-
-router.post('/verbs', listVerbs);
-
-export default router;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const openAIcontrollers_1 = require("../controllers/openAIcontrollers");
+const router = (0, express_1.Router)();
+router.post('/verbs', openAIcontrollers_1.listVerbs);
+exports.default = router;
