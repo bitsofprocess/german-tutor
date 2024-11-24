@@ -76,6 +76,7 @@ export async function listVerbs(req: Request, res: Response) {
   }
 
 // structured output example
+// Reference: https://platform.openai.com/docs/guides/structured-outputs
 export async function extract(req: Request, res: Response) {
   const { message } = req.body
 
