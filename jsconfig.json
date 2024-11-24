@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+      "baseUrl": "src",       
+      "paths": {
+        "src/*": ["src/*"],  
+        "config/*": ["backend/config/*"],  
+        "public/*": ["public/*"] 
+        }
+    },
+    "include": ["src", "backend/config", "public"] 
+  }
+  
