@@ -10,7 +10,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.listVerbs = listVerbs;
+exports.extract = extract;
 const openAIconfig_1 = require("../config/openAIconfig");
+const zod_1 = require("openai/helpers/zod");
+const zod_2 = require("zod");
 // TODO: `Give me 5 sentences in English for me to translate into german that will allow me to practice ${concept}. Give me the nouns and verbs present in the sentence in german in parenthesis after each sentence for reference.`
 function listVerbs(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -23,5 +26,29 @@ function listVerbs(req, res) {
         res.status(200).json({
             verbs: completion.choices[0].message.content
         });
+    });
+}
+function extract(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const { message } = req.body;
+        const CalendarEvent = zod_2.z.object({
+            name: zod_2.z.string(),
+            date: zod_2.z.string(),
+            participants: zod_2.z.array(zod_2.z.string()),
+        });
+        const completion = yield openAIconfig_1.openai.beta.chat.completions.parse({
+            model: "gpt-4o-mini",
+            max_tokens: 100,
+            messages: [
+                { role: "system", content: "Extract the event information." },
+                { role: "user", content: `${message}` },
+            ],
+            response_format: (0, zod_1.zodResponseFormat)(CalendarEvent, "event"),
+        });
+        res.status(200).json({
+            event: completion.choices[0].message.parsed
+        });
+        // const event = completion.choices[0].message.parsed; 
+        // console.log(event);
     });
 }
