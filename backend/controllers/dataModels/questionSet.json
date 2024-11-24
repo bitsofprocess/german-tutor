@@ -1,0 +1,32 @@
+{
+  "subordinateClauses": [
+    {
+      "sentence": {
+        "english": "I think that the cat is sleeping on the sofa.",
+        "german": "Ich denke, dass die Katze auf dem Sofa schläft."
+      },
+      "references": {
+        "nouns": [
+          {
+            "word": "the cat",
+            "gender": "die Katze (f)"
+          },
+          {
+            "word": "the sofa",
+            "gender": "das Sofa (n)"
+          }
+        ],
+        "verbs": [
+          {
+            "word": "think",
+            "german": "denken"
+          },
+          {
+            "word": "is sleeping",
+            "german": "schläft"
+          }
+        ]
+      }
+    }
+  ]
+}
