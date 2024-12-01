@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import openAIRoutes from './routes/openAIroutes.js';
+import openAIRoutes from './routes/openAIroutes';
 
 const app = express();
 
