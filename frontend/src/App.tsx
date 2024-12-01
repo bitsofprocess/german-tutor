@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 
 function App() {
   const [number, setNumber] = useState('');
-  const [response, setResponse] = useState('');
+  const [verbResponse, setVerbResponse] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   // Specify the type for the event parameter
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleVerbRequest = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setError('');
@@ -22,7 +22,7 @@ function App() {
       if (!res.ok) throw new Error('Network response was not ok');
 
       const data = await res.json();
-      setResponse(data.verbs);
+      setVerbResponse(data.verbs);
     } catch (err) {
       // Type assertion for the error to access the message property
       if (err instanceof Error) {
@@ -38,7 +38,7 @@ function App() {
   return (
     <div>
       <h1>German Verbs Practice</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleVerbRequest}>
         <label>
           Enter number of verbs:
           <input type="number" value={number} onChange={(e) => setNumber(e.target.value)} />
@@ -47,7 +47,7 @@ function App() {
       </form>
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
-      {response && <p>{response}</p>}
+      {verbResponse && <p>{verbResponse}</p>}
     </div>
   );
 }
