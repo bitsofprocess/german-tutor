@@ -1,10 +1,8 @@
 import { Router } from 'express';
-import { listVerbs, extract, conceptPractice } from '../controllers/openAIcontrollers';
+import { translationPractice } from '../controllers/openAIcontrollers';
 
 const router = Router();
 
-router.post('/verbs', listVerbs);
-router.post('/extract', extract);
-router.post('/concept', conceptPractice)
+router.post('/translationPractice', translationPractice)
 
 export default router;
